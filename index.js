@@ -44,7 +44,7 @@ app.post('/webhook', async (req, res) => {
      }).then((res)=> res.json())
  
      console.log(payment)
-    return res.send(payment)
+    return res.status(214).send(payment)
 
 });
 
