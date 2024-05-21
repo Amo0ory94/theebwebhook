@@ -1,5 +1,7 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors'
+import router from './router.js'
 
 const app = express();
 const PORT = process.env.PORT || 3030;
@@ -11,7 +13,9 @@ async function getAuth(){
       return data.json()
       })
 }
-app.use(bodyParser.json());
+
+app.use(router)
+app.use(cors());
 app.post('/webhook', async (req, res) => {
     const data = req.body;
      const auth = await getAuth()
